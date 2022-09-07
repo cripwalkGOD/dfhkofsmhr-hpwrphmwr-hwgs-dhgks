@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="https://steam-rep.com/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>csgorep.org</title>
+    <link rel="stylesheet" href="./css/index.css" />
+</head>
+
+<body>
+    <div id="app" data-v-app="">
+        <div id="popup"></div>
+        <!---->
+        <div id="notifier"></div>
+        <header class="">
+            <a href="#" id="logo" class="router-link-active router-link-exact-active" aria-current="page"></a>
+            <nav class="">
+                <a aria-current="page" href="./index.html"
+                    class="router-link-active router-link-exact-active active">Browse</a><a href="./faq.html"
+                    class="">FAQ</a>
+                <a href="./contact.html" class="">Contact</a>
+                <a href="./middlemen.html" class="">Official MM</a>
+                <div class="">
+                    <img src="data:image/png;base64,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zeMHP/gB3/ve9zh58iSzZs1CEASefPJJMpkMqqpimibt7e0sXbqURCLBHXfcUZRWlmXS6TQPPvgg4XCYhx9+mNtuuw2AmTNnctVVV9HW1saf/vQnFixYwOc//3nS6TSDg4P85S9/YfPmzVx00UU0NjbyxBNPcPHFF3Prrbdy1113sWDBAjZt2sRdd91FaWkpa9euZeLEiaRSKTo6Ojh27BgA69evZ+nSpezevZs333wzz9J7Cdorr7zCnDlzmDJlCn/4wx/YsWMHDQ0NNDc309HRQSgU8hU9HA5jmibhcDhPwcLhMJFIhHA47CthcKxatYqysjKi0SiaphEKhdi1a5evuF6yuWjRIsaNG0dDQwOPPPIImzZtYvr06Vx++eUcOHDA52vQALmuS39/P+effz4rVqxg+/btACxbtowlS5YwODgIQDQa9fds2zZdXV0oijKsHDjWFlr0XNXZvLyFHTx4kAkTJvDiiy9y5513cvLkSbLZLFVVVYTDYZLJJN/5zndoampC0zTmzJlDX18f06dPZ8WKFezbt485c+awevVqP/O2bZtIJMKcOXNIpVIj0nplsD179gCwdetWX1FnzZrFgQMHWL9+PdXV1ciyzOrVqzFNk3feeYdNmzaxbNkynnnmGZYuXcqtt96KLMvU1NSQSCRQFIXZs2fT19fH1VdfzaWXXsq+ffuora0lHA77Ai8pKeHIkSNs3ryZwcFBPwzwAK2qKrt27eLRRx/l8OHDhEIh1q1bx49+9CN+8pOf8OUvf9lXYq88FiyhecOrHnhls8K8YPny5dx5551861vf4rbbbmPTpk2UlJT4eUU2m0UQBG666SYA6uvraWpqYu/evRiGwZIlS5g+fboflnj7EwQBXdd5+umn0TSN66+/3t/j9ddfTzqd5h//+Ac9PT15iXhh+S4Yso3la8wstGclGhsb+f73v8/KlStZtWoV8+fPZ+PGjf4GVq5cSSQS4YEHHmDt2rVcd911ZDIZXNelrq6Op59+mquvvhrHcfw4OBhreXFcMVov4WtqagJg+/btvvt7/vnneeGFF/j617/uVw0AHn30UURR5Ktf/Sq7du3i+eefp6amhoULF9LQ0ODHhrqu+yHNvHnzqKur449//CNr1qzJszQPPvigvy8vWQxWQby4etu2bbz66qtUVVX5Sjljxgy+8pWvYBgGL7/8cl64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"
+                        class="steam-login" />
+                </div>
+            </nav>
+            <div class="hamburger-wrapper">
+                <!----><button class="hamburger hamburger--spin" type="button">
+                    <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+                </button>
+            </div>
+        </header>
+        <main>
+            <div class="ps ps--active-y">
+                <div id="subpage-browse" class="subpage">
+                    <div class="search">
+                        <div class="heading">Search user</div>
+                        <div class="input-wrapper">
+                            <!---->
+                            <div class="input">
+                                <input placeholder="SteamID64" name="steam_id" autocomplete="off" type="text" />
+                                <div class="btn-search">
+                                    <img src="./assets/magnifier.svg" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description">
+                            <span>Enter SteamID64 here</span>
+                            <div class="icon icon-arrow">
+                                <img src="./assets/curve_arrow.svg" />
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="list history">
+                        <div class="header">
+                            <h2>Transaction history:</h2>
+                            <div class="filter">
+                                <div class="select-box">
+                                    <div class="header"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="record-content">
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">Ra</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">278</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/fd150f17b89c909b8c1871d4bd2ec64d4d6603ec_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Sold CS:GO item for
+                                        <span class="price-green">$450</span> by
+                                        <span class="price-green">bank wire</span>
+                                    </div>
+                                    <p>another cash trade, quick replies and fair offers!</p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/bank.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">Ra</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">278</div>
+                                    </div>
+                                </div>
+                                <p href="https://steam-rep.com/profile/76561198031680954" class="avatar">
+                                    <img src="./assets/fd150f17b89c909b8c1871d4bd2ec64d4d6603ec_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Bought balance for
+                                        <span class="price-green">$150</span> by
+                                        <span class="price-green">bank wire</span>
+                                    </div>
+                                    <p>
+                                        Bought 150£ worth of buff balance, really nice guy and
+                                        expained the process well would use again. :)
+                                    </p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/bank.svg" /><img src="./assets/trade_second.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">BozzMan</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">260</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/ecc1ec8de709971787cedbed2da48d079b147325_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Sold CS:GO item for
+                                        <span class="price-green">$3 950</span> by
+                                        <span class="price-green">bitcoin</span>
+                                    </div>
+                                    <p>sold talon sapphire fast easy deal</p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/btc.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">Gu ☂</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">275</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/bb32afc695042080431beede0be9da314a57f1c7_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Sold CS:GO item for
+                                        <span class="price-green">$260</span> by
+                                        <span class="price-green">bank wire</span>
+                                    </div>
+                                    <p>+ rep, rychle jednani</p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/bank.svg" /><img src="./assets/trade_second.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">csgosrb︱💰BUYING SKINS💰</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">109</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/61a0ce3977c8e9ef7775c6d6c8640071c86d0b0b_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Bought CS:GO item by
+                                        <span class="price-green">bank wire</span>
+                                    </div>
+                                    <p>
+                                        Sve proteklo super i brzo. Sve pohvale za ovog momka! :)
+                                    </p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/bank.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">csgosrb︱💰BUYING SKINS💰</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">109</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/61a0ce3977c8e9ef7775c6d6c8640071c86d0b0b_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Sold CS:GO item for
+                                        <span class="price-green">$170</span> by
+                                        <span class="price-green">bank wire</span>
+                                    </div>
+                                    <p>Sve 5, posten, brz, ispravan</p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/bank.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">Balajka</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">21</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/533f7480ea5923c75a5da6609e26664ddcf1827e_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Sold CS:GO item for
+                                        <span class="price-green">$30</span> by
+                                        <span class="price-green">PayPal</span>
+                                    </div>
+                                    <p>
+                                        Opravdu skvělý člověk, pomůže, vše domluví prostě člověk k
+                                        nezaplacení+rep.
+                                    </p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/paypal.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">ツImSyncho ♡ SKINS | 24/7 ON</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">341</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/1cce55e72320bc1d791f70302e13f654c9365807_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Sold CS:GO item for
+                                        <span class="price-green">$205</span> by
+                                        <span class="price-green">PayPal</span>
+                                    </div>
+                                    <p>
+                                        Very nice guy, fast trade I sold him my paracord. I
+                                        recommend
+                                    </p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/paypal.svg" /><img src="./assets/trade_second.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">UNKNOX ⇆ Skins &amp; Balance</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">54</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/d32a883767bb0cdef3bed8bd085a9c686822c788_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Bought balance for
+                                        <span class="price-green">$150</span> by
+                                        <span class="price-green">bank wire</span>
+                                    </div>
+                                    <p>Bought 1k Buff bal. Nice and Easy :)</p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/bank.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">Ra</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">278</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/fd150f17b89c909b8c1871d4bd2ec64d4d6603ec_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Sold CS:GO item for
+                                        <span class="price-green">$1 125</span> by
+                                        <span class="price-green">Cash APP</span>
+                                    </div>
+                                    <p>
+                                        bought my ak47 hydrop. nice person good trader and most
+                                        important honest man GL
+                                    </p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/cashapp.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">onTeL monKe</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">6</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/b95c41229a8147e21bb83117f187a44acb3ea3f3_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Sold CS:GO item for
+                                        <span class="price-green">$82</span> by
+                                        <span class="price-green">litecoin</span>
+                                    </div>
+                                    <p>
+                                        give me knife blue gem for me skins and i add 82€ i send
+                                        first money affter accept trade big +rep
+                                    </p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/ltc.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p  class="nickname">Elviz ツ
+                                        Buying skins &lt;95%</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">128</div>
+                                    </div>
+                                </div>
+                                <p  class="avatar">
+                                    <img src="./assets/fb654f99d257568af32966e7a69d26840d5c3e14_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Bought CS:GO item for
+                                        <span class="price-green">$695</span> by
+                                        <span class="price-green">USDT</span>
+                                    </div>
+                                    <p>
+                                        Bought butterfly cw ft, went first, got skins delivered
+                                        instant. good and friendly seller
+                                    </p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/usdt.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p  class="nickname">Colonel
+                                        Sanders (Buying Skins)</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">72</div>
+                                    </div>
+                                </div>
+                                <p  class="avatar">
+                                    <img src="./assets/920d318662f90f19532776681f5d6e27a09a486f_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Sold CS:GO item for
+                                        <span class="price-green">$1 700</span> by
+                                        <span class="price-green">bank wire</span>
+                                    </div>
+                                    <p>
+                                        Sold BFK Gamma Doppler P4, received payment immediately
+                                        after trade. +REP
+                                    </p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/bank.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p  class="nickname">Flicted
+                                        pricempire.com</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">1</div>
+                                    </div>
+                                </div>
+                                <p  class="avatar">
+                                    <img src="./assets/bfd3c77d6b930dba64034780bb57628da95de5cb_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Bought CS:GO item for
+                                        <span class="price-green">$200</span> by
+                                        <span class="price-green">bank wire</span>
+                                    </div>
+                                    <p>
+                                        Friendly, trustable, went first with no problem, quick
+                                        trade, no mess.
+                                    </p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/bank.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                            <div class="el status_1">
+                                <div class="recommendations">
+                                    <p class="nickname">Ra</p>
+                                    <div class="reviews-wrapper">
+                                        <div class="icon">
+                                            <img src="./assets/good_review.svg" />
+                                        </div>
+                                        <div class="amount">278</div>
+                                    </div>
+                                </div>
+                                <p class="avatar">
+                                    <img src="./assets/fd150f17b89c909b8c1871d4bd2ec64d4d6603ec_full.jpg"
+                                        class="positive" />
+                                </p>
+                                <div class="status positive">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="content">
+                                    <div class="transaction-title">
+                                        <strong>Transaction:</strong> Bought balance for
+                                        <span class="price-green">$900</span> by
+                                        <span class="price-green">bank wire</span>
+                                    </div>
+                                    <p>Bought balance, quick and easy 10/10</p>
+                                    <!---->
+                                </div>
+                                <div class="icons">
+                                    <!----><img src="./assets/bank.svg" /><img src="./assets/trade_first.svg" />
+                                </div>
+                                <!---->
+                                <!---->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="statistics">
+                        <div class="statistics__wrapper">
+                            <div class="stats-box positive_feedbacks">
+                                <div class="status green">
+                                    <img src="./assets/arrow.svg" />
+                                </div>
+                                <div class="stats">
+                                    <div class="number">31218</div>
+                                    <div class="title">POSITIVE FEEDBACKS</div>
+                                </div>
+                            </div>
+                            <div class="stats-box banned_users">
+                                <div class="status red"><img src="./assets/cross.svg" /></div>
+                                <div class="stats">
+                                    <div class="number">575</div>
+                                    <div class="title">BANNED USERS</div>
+                                </div>
+                            </div>
+                            <div class="stats-box users_registered">
+                                <div class="status blue"><img src="./assets/user.svg" /></div>
+                                <div class="stats">
+                                    <div class="number">19915</div>
+                                    <div class="title">USERS REGISTERED</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-wrapper">
+                        <div class="additional-info">
+                            <img src="./assets/logo.svg" />
+                            <div class="text">
+                                <p>
+                                    Website to keep track of your cash trades, find trustworthy
+                                </p>
+                                <p>users to do transactions with and avoid risky trades</p>
+                                <p>by easily checking someone's transaction history.</p>
+                                <p>Founded in 2020.</p>
+                            </div>
+                        </div>
+                        <div class="nav">
+                            <div class="title">Menu CSGOREP</div>
+                            <div classs="buttons">
+                                <a aria-current="page" href="./index.html"
+                                    class="router-link-active router-link-exact-active">
+                                    <div class="nav-btn">
+                                        <img src="./assets/li.svg" /> Browse
+                                    </div>
+                                </a><a href="./faq.html" class="">
+                                    <div class="nav-btn">
+                                        <img src="./assets/li.svg" /> FAQ
+                                    </div>
+                                </a><a href="./changelog.html" class="">
+                                    <div class="nav-btn">
+                                        <img src="./assets/li.svg" /> Changelog
+                                    </div>
+                                </a>
+                                <a href="./contact.html" class="">
+                                    <div class="nav-btn">
+                                        <img src="./assets/li.svg" /> Contact
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="bg"><img src="./assets/weapons.png" /></div>
+                    </div>
+                    <footer>
+                        <div class="left">
+                            <div class="statement">
+                                <span class="version">v1.12</span>CSGOrep 2020. Powered by
+                                Steam. Not affiliated with Valve Corp.
+                            </div>
+                        </div>
+                        <div class="right">
+                            <a href="https://twitter.com/CSGORepCom" target="_blank" class="twitter">
+                                <div class="icon social-icon">
+                                    <img src="./assets/twitter_footer.svg" />
+                                </div>
+                                @CSGORepCom
+                            </a>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
